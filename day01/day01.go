@@ -10,9 +10,7 @@ import (
 	"strconv"
 )
 
-var (
-	errConv = errors.New("cannot convert string to int")
-)
+var errConv = errors.New("cannot convert string to int")
 
 func readLines(path string) ([]string, error) {
 	file, err := os.Open(path)
