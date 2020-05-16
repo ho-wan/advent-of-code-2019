@@ -1,6 +1,7 @@
 package main
 
 import (
+	"errors"
 	"testing"
 
 	"github.com/google/go-cmp/cmp"
@@ -41,7 +42,7 @@ func TestConvert(t *testing.T) {
 	for _, tc := range tt {
 		t.Run(tc.name, func(t *testing.T) {
 			ints, err := convertStringToInt(tc.strings)
-			if err != tc.expErr {
+			if !errors.Is(err, tc.expErr) {
 				t.Fatalf("error: got '%v', want '%v'", err, tc.expErr)
 			}
 

@@ -11,7 +11,7 @@ import (
 )
 
 var (
-	errConv = errors.New("error converting string to int")
+	errConv = errors.New("cannot convert string to int")
 )
 
 func readLines(path string) ([]string, error) {
@@ -35,7 +35,7 @@ func convertStringToInt(strings []string) ([]int, error) {
 	for _, s := range strings {
 		i, err := strconv.Atoi(s)
 		if err != nil {
-			return nil, errConv
+			return nil, fmt.Errorf("convertStringToInt: error: %w", errConv)
 		}
 		nums = append(nums, i)
 	}
