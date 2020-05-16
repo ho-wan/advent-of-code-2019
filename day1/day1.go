@@ -15,7 +15,7 @@ var (
 )
 
 func readLines(path string) ([]string, error) {
-	file, err := os.Open("day1-input.txt")
+	file, err := os.Open(path)
 	if err != nil {
 		return nil, err
 	}

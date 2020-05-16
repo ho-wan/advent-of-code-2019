@@ -6,6 +6,25 @@ import (
 	"github.com/google/go-cmp/cmp"
 )
 
+func TestReadlines(t *testing.T) {
+	t.Run("hasFile", func(t *testing.T) {
+		lines, err := readLines("day1-input.txt")
+		if err != nil {
+			t.Fatalf("error reading file")
+		}
+		if len(lines) == 0 {
+			t.Fatalf("file should not be empty")
+		}
+	})
+
+	t.Run("noFile", func(t *testing.T) {
+		_, err := readLines("no-such-file.txt")
+		if err == nil {
+			t.Fatalf("did not get expected error")
+		}
+	})
+}
+
 func TestConvert(t *testing.T) {
 	tt := []struct {
 		name    string
