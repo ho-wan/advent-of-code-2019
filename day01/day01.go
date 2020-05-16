@@ -75,7 +75,7 @@ func calcCumFuel(mass []int) int {
 }
 
 func main() {
-	lines, err := readLines("day1-input.txt")
+	lines, err := readLines("day01-input.txt")
 	if err != nil {
 		log.Fatal(err)
 	}

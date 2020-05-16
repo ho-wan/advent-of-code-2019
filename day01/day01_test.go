@@ -9,7 +9,7 @@ import (
 
 func TestReadlines(t *testing.T) {
 	t.Run("hasFile", func(t *testing.T) {
-		lines, err := readLines("day1-input.txt")
+		lines, err := readLines("day01-input.txt")
 		if err != nil {
 			t.Fatalf("error reading file")
 		}
