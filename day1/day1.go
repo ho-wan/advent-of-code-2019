@@ -42,12 +42,34 @@ func convertStringToInt(strings []string) ([]int, error) {
 	return nums, nil
 }
 
+func fuel(f float64) float64 {
+	return math.Max(math.Floor(float64(f)/3.0)-2.0, 0.0)
+}
+
 func calcFuel(mass []int) int {
 	var f int
 	for _, m := range mass {
 		// divide mass by 3, minus 2 to get fuel - should not be less than zero
-		ff := math.Floor(float64(m)/3.0) - 2.0
-		f += int(math.Max(ff, 0.0))
+		addFuel := fuel(float64(m))
+		f += int(addFuel)
+	}
+	return f
+}
+
+func calcCumFuel(mass []int) int {
+	var f int
+	for _, m := range mass {
+		var cf float64
+		addFuel := float64(m)
+		for {
+			// divide mass by 3, minus 2 to get fuel, keep summing until addn mass is zero
+			addFuel = fuel(float64(addFuel))
+			if addFuel == 0 {
+				break
+			}
+			cf += addFuel
+		}
+		f += int(cf)
 	}
 	return f
 }
@@ -64,5 +86,8 @@ func main() {
 	}
 
 	f := calcFuel(mass)
-	fmt.Printf("Fuel: %d", f)
+	fmt.Printf("Fuel: %d\n", f)
+
+	cf := calcCumFuel(mass)
+	fmt.Printf("Cumulative Fuel: %d\n", cf)
 }
