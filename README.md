@@ -1,6 +1,5 @@
 # Advent of Code 2019
 
-Golang solutions by Ho-Wan
-anonymous user #917636
+Golang solutions
 
 https://adventofcode.com/
