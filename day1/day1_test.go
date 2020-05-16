@@ -1,6 +1,37 @@
 package main
 
-import "testing"
+import (
+	"testing"
+
+	"github.com/google/go-cmp/cmp"
+)
+
+func TestConvert(t *testing.T) {
+	tt := []struct {
+		name    string
+		strings []string
+		expInts []int
+		expErr  error
+	}{
+		{"nil", nil, []int{}, nil},
+		{"empty", []string{}, []int{}, nil},
+		{"success", []string{"12", "23"}, []int{12, 23}, nil},
+		{"notNumber", []string{"12", "ab"}, nil, errConv},
+	}
+
+	for _, tc := range tt {
+		t.Run(tc.name, func(t *testing.T) {
+			ints, err := convertStringToInt(tc.strings)
+			if err != tc.expErr {
+				t.Fatalf("error: got '%v', want '%v'", err, tc.expErr)
+			}
+
+			if !cmp.Equal(ints, tc.expInts) {
+				t.Fatalf("got %v, want %v", ints, tc.expInts)
+			}
+		})
+	}
+}
 
 func TestCalcFuel(t *testing.T) {
 	tt := []struct {
