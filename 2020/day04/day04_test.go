@@ -1,6 +1,7 @@
-package main
+package day04
 
 import (
+	"fmt"
 	"testing"
 
 	"github.com/stretchr/testify/assert"
@@ -20,4 +21,9 @@ func Test_day4(t *testing.T) {
 			assert.NoError(t, err)
 		})
 	}
+}
+
+func Test_Run(t *testing.T) {
+	res, _ := day4()
+	fmt.Println("res:", res)
 }

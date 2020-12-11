@@ -1,8 +1,7 @@
-package main
+package day04
 
 import (
 	"bufio"
-	"fmt"
 	"os"
 )
 
@@ -23,18 +22,10 @@ func readLines(path string) ([]string, error) {
 }
 
 func day4() (int, error) {
-	lines, err := readLines("input.txt")
+	_, err := readLines("input.txt")
 	if err != nil {
 		return 0, err
 	}
 
-	fmt.Print(lines[0])
 	return -1, nil
-}
-
-func main() {
-	_, err := day4()
-	if err != nil {
-		panic(err)
-	}
 }
